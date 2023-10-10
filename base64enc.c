@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
                 }
             }
             
-            output[4] = '\n';                                             /* After the fourth byte, insert null terminator */
+            output[4] = '\0';                                             /* After the fourth byte, insert null terminator */
 
             size_t n_write = fwrite(output, 1, 4, stdout);                /* Save the charcter for output */
             number_of_chars += n_write;                                   /* Increment count for each charcter written to output */
@@ -88,6 +88,7 @@ int main(int argc, char *argv[])
         }
         if (n_read < num_requested) {
             /* Got less than expected */
+          putchar('\n');
             if (feof(newFile)) {
               break;                                                      /* End of file */
             }
