@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
 
             // Loop through the array and encode the values usinng base64
             for (int i = 0; i < 4; i++) {
-                if (i > n_read) {
+                if (i > num_requested) {
                     output[i] = '=';                                      /* Any unfilled bytes will be inserted with '=' */
                 } else {
                     output[i] = b64_alphabet[alph_ind[i]];                /* Encode the data */
@@ -86,7 +86,7 @@ int main(int argc, char *argv[])
               err(1, "Error with this file. Sorry");                      /* Write error */
             }
         }
-        if (n_read < num_requested) {
+        if (n_read < 3) {
             /* Got less than expected */
           putchar('\n');
             if (feof(newFile)) {
