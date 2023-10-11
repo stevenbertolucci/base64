@@ -80,11 +80,6 @@ int main(int argc, char *argv[])
             size_t n_write = fwrite(output, 1, 4, stdout);                /* Save the charcter for output */
             number_of_chars += n_write;                                   /* Increment count for each charcter written to output */
 
-            if (number_of_chars >= 76 && !feof(newFile)) {
-              putchar('\n');
-              number_of_chars = 0;
-            }
-
             if (ferror(stdout)) {
               err(1, "Error with this file. Sorry");                      /* Write error */
             }
@@ -92,7 +87,10 @@ int main(int argc, char *argv[])
 
         if (n_read < 3) {
           /* Got less than expected */
-          putchar('\n'); 
+          if (number_of_chars >= 76) {
+            putchar('\n'); 
+            number_of_chars = 0;
+          }
             if (feof(newFile)) {
               break;                                                      /* End of file */
             }
