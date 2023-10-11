@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
             size_t n_write = fwrite(output, 1, 4, stdout);                /* Save the charcter for output */
             number_of_chars += n_write;                                   /* Increment count for each charcter written to output */
 
-            if (number_of_chars >= 76) {
+            if (number_of_chars >= 76 && !feof(newFile)) {
               putchar('\n');
               number_of_chars = 0;
             }
