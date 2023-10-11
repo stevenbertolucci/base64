@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
             number_of_chars += n_write;                                   /* Increment count for each charcter written to output */
 
             // Check to see if there has been 76 characters written
-            if (number_of_chars >= 76) {
+            if (number_of_chars > 76) {
               putchar('\n');                                              /* Break the line by inserting new line */         
               number_of_chars = 0;                                        /* Reset the count */
             }
