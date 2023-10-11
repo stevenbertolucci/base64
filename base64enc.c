@@ -39,8 +39,8 @@ int main(int argc, char *argv[])
     if (argc > 2) {
         fprintf(stderr, "Usage: %s [FILE]\n", argv[0]);
         errx(1, "Too many arguments");
-    } else if (argc == 2 && strcmp(argv[1], "-") != 0) {
-        newFile = fopen(argv[1], "r");                                    /* open FILE */
+    } else if (argc == 2 && strcmp(argv[1], "-")) {
+        newFile = fopen(argv[1], "rb");                                   /* open FILE */
         if (!newFile) {
             err(1, "There is an error opening this file %s", argv[1]);    /* Display error message */
         }
@@ -60,12 +60,16 @@ int main(int argc, char *argv[])
             alph_ind[3] = input_bytes[2] & 0x3Fu;
 
             char output[5];
-            output[0] = b64_alphabet[alph_ind[0]];
 
             // Loop through the array and encode the values usinng base64
             for (int i = 0; i < 4; i++) {
-                if (i > num_requested) {
+                if (i == 2 && n_read == 1) {
                     output[i] = '=';                                      /* Any unfilled bytes will be inserted with '=' */
+                    output[i+1] = '=';
+                    break;
+                } else if (i == 3 && n_read == 2) {
+                  output[i] = '=';
+                  break;
                 } else {
                     output[i] = b64_alphabet[alph_ind[i]];                /* Encode the data */
                 }
@@ -87,8 +91,9 @@ int main(int argc, char *argv[])
             }
         }
         if (n_read < 3) {
-            /* Got less than expected */
+          /* Got less than expected */
           putchar('\n');
+          
             if (feof(newFile)) {
               break;                                                      /* End of file */
             }
