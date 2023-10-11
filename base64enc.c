@@ -90,9 +90,10 @@ int main(int argc, char *argv[])
               err(1, "Error with this file. Sorry");                      /* Write error */
             }
         }
-        if (n_read < 3) {
+
+        if (n_read < 3 && n_read > 0) {
           /* Got less than expected */
-          putchar('\n');
+          putchar('\n');                                                  /* Print newline */
           
             if (feof(newFile)) {
               break;                                                      /* End of file */
