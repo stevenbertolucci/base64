@@ -95,11 +95,11 @@ int main(int argc, char *argv[])
           /* Got less than expected */
           putchar('\n'); 
           
-            if (n_read == 0 && feof(newFile)) {
+            if (feof(newFile)) {
               break;                                                      /* End of file */
             }
 
-            if (n_read == 0 && ferror(newFile)) {
+            if (ferror(newFile)) {
                 err(1, "Error with this file. Sorry");                    /* Read error */
             }
         }
