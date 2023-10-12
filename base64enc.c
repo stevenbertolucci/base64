@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
             err(1, "There is an error opening this file %s", argv[1]);    /* Display error message */
         }
     } else {
-        newFile = stdin;                                                     /* use stdin instead */
+        newFile = stdin;                                                  /* use stdin instead */
     }
    
     for (;;) {
@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
                     output[i] = '=';                                      /* Any unfilled bytes will be inserted with '=' */
                     output[i+1] = '=';
                     break;
-                } else if (i == 3 && n_read == 2) {
+                } else if (i == 3 && n_read == 2) {                       /* See comment two lines above */
                   output[i] = '=';
                   break;
                 } else {
@@ -85,15 +85,15 @@ int main(int argc, char *argv[])
               err(1, "Error with this file. Sorry");                      /* Write error */
             }
 
-            if (number_of_chars >= 76) {
-              putchar('\n');
-              number_of_chars = 0;
+            if (number_of_chars >= 76) {                                  /* Line wrapping. If there are 76 or more characters outputted, create newline */
+              putchar('\n');                                              /* Insert newline */
+              number_of_chars = 0;                                        /* Reset count */
             }
         }
 
         if (n_read < 3) {
           /* Got less than expected */
-          if (number_of_chars != 0) {
+          if (number_of_chars != 0) {                                     /* Prevents printing extra newline if there are no output */
             putchar('\n'); 
           }
             if (feof(newFile)) {
