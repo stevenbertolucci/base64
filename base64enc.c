@@ -32,7 +32,7 @@ static char const b64_alphabet[] =
 
 int main(int argc, char *argv[])
 {
-    FILE *newFile = stdin;                                                        /* Pointer to newFile */
+    FILE *newFile;                                                        /* Pointer to newFile */
     int num_requested = 3;
     int number_of_chars = 0;                                              /* Initialized to keep track of count later */
 
@@ -44,9 +44,9 @@ int main(int argc, char *argv[])
         if (!newFile) {
             err(1, "There is an error opening this file %s", argv[1]);    /* Display error message */
         }
+    } else {
+        newFile = stdin;                                                     /* use stdin instead */
     }
-        
-   // *newFile = stdin;                                                     /* use stdin instead */
    
     for (;;) {
         uint8_t input_bytes[3] = {0};
