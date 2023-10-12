@@ -32,7 +32,7 @@ static char const b64_alphabet[] =
 
 int main(int argc, char *argv[])
 {
-    FILE *newFile;                                                        /* Pointer to newFile */
+    FILE *newFile = stdin;                                                        /* Pointer to newFile */
     int num_requested = 3;
     int number_of_chars = 0;                                              /* Initialized to keep track of count later */
 
@@ -44,9 +44,10 @@ int main(int argc, char *argv[])
         if (!newFile) {
             err(1, "There is an error opening this file %s", argv[1]);    /* Display error message */
         }
-    } else {
-        newFile = stdin;                                                  /* use stdin instead */
     }
+        
+   // *newFile = stdin;                                                     /* use stdin instead */
+   
     for (;;) {
         uint8_t input_bytes[3] = {0};
         size_t n_read = fread(input_bytes, 1, num_requested, newFile);    /* Hold count for the number of characters in the file/stdin */
@@ -94,11 +95,11 @@ int main(int argc, char *argv[])
           /* Got less than expected */
           putchar('\n'); 
           
-            if (feof(newFile)) {
+            if (n_read == 0 && feof(newFile)) {
               break;                                                      /* End of file */
             }
 
-            if (ferror(newFile)) {
+            if (n_read == 0 && ferror(newFile)) {
                 err(1, "Error with this file. Sorry");                    /* Read error */
             }
         }
