@@ -93,8 +93,9 @@ int main(int argc, char *argv[])
 
         if (n_read < 3) {
           /* Got less than expected */
-          putchar('\n'); 
-          
+          if (number_of_chars != 0) {
+            putchar('\n'); 
+          }
             if (feof(newFile)) {
               break;                                                      /* End of file */
             }
