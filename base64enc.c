@@ -83,14 +83,17 @@ int main(int argc, char *argv[])
             if (ferror(stdout)) {
               err(1, "Error with this file. Sorry");                      /* Write error */
             }
+
+            if (number_of_chars >= 76) {
+              putchar('\n');
+              number_of_chars = 0;
+            }
         }
 
         if (n_read < 3) {
           /* Got less than expected */
-          if (number_of_chars >= 76) {
-            putchar('\n'); 
-            number_of_chars = 0;
-          }
+          putchar('\n'); 
+          
             if (feof(newFile)) {
               break;                                                      /* End of file */
             }
