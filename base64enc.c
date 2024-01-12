@@ -1,6 +1,6 @@
 // Author: Steven Bertolucci
-// Course: CS 374/344 Operating System I
-// Due Date: October 15, 2023
+// Course: CS 374 Operating System I
+// Due Date: January 21, 2024
 // File: base64enc.c
 // Description: 
 // -----------------------------------------------------------------------------------------------------
@@ -17,6 +17,21 @@
 //       base64 alphabet, and then look up the corresponding characters in the alphabet to produce 
 //       text for output.
 // -----------------------------------------------------------------------------------------------------
+
+
+/* ################################################################################################### */
+/* #                                                                                                 # */
+/* #                                                                                                 # */
+/* #                              !!!  NOTICE OF REUSED CODE !!!                                     # */
+/* #                                                                                                 # */
+/* #        I am resuing my code from the Fall 2023 quarter. This code was started as a              # */
+/* #        skeleton code provided in the Fall 2023 base64 megathread. I then finished the code      # */
+/* #        in my writing. The source to the Fall 2023 base64 megathred is below:                    # */
+/* #        https://edstem.org/us/courses/48016/discussion/3510524                                   # */
+/* #                                                                                                 # */
+/* #                                                                                                 # */
+/* ################################################################################################### */
+
 
 #include <stdio.h>  // Standard input and output
 #include <errno.h>  // Access to errno and Exxx macros
