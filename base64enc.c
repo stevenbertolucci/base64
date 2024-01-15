@@ -26,7 +26,7 @@
 /* #                                                                                                 # */
 /* #        I am resuing my code from the Fall 2023 quarter. This code was started as a              # */
 /* #        skeleton code provided in the Fall 2023 base64 megathread. I then finished the code      # */
-/* #        in my writing. The source to the Fall 2023 base64 megathread is below:                    # */
+/* #        in my writing. The source to the Fall 2023 base64 megathread is below:                   # */
 /* #        https://edstem.org/us/courses/48016/discussion/3510524                                   # */
 /* #                                                                                                 # */
 /* #                                                                                                 # */
